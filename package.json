@@ -1,0 +1,6 @@
+{ "name": "simplesets",
+  "version": "0.9.0",
+  "description": "Simple set data type, with API similar to Python's sets module.",
+  "author": "Peter Scott <pjscott@iastate.edu>",
+  "main": "./lib/simplesets.js"
+}
