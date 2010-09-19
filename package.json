@@ -4,5 +4,8 @@
   "author": "Peter Scott <pjscott@iastate.edu>",
   "main": "./lib/simplesets.js",
   "repository": {"type": "git", "url": "http://github.com/PeterScott/simplesets-nodejs.git"},
-  "homepage": "http://github.com/PeterScott/simplesets-nodejs"
+  "homepage": "http://github.com/PeterScott/simplesets-nodejs",
+  "scripts": {
+      "test": "node test/testsets.js"
+  }
 }
