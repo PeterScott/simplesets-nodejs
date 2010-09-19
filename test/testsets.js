@@ -53,5 +53,20 @@ for (var i = 0; i < 200; i++) {
 
 assert.ok(sb.issubset(sa));
 
+// Test the pick operation, in much the same way.
+var sa = new sets.Set([3, 1, 4, 1, 5, 9]);
+var sb = new sets.Set();
+
+for (var i = 0; i < 200; i++) {
+    var sa_old_size = sa.size()
+    sb.add(sa.pick());
+    assert.ok(sa.size() === sa_old_size);
+}
+
+assert.ok(sb.issubset(sa));
+assert.ok(nullset.pick() === null);
+assert.ok(nullset.pop() === null);
+assert.ok(nullset.issubset(nullset));
+
 // If we got to here, then...
 console.log('All tests passed!');
