@@ -78,6 +78,8 @@ The `Set` class has the following methods:
 
 * `issuperset(other)`: Return `true` if every element of the other is in this set.
 
+* `equals(other)`: Return `true` if this set equals another set, i.e. if every element in each set is equal to an element in the other set.
+
 * `array()`: Return a copy of the items in the set, as an array.
 
 * `size()`: Return the size of the set.
