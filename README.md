@@ -51,7 +51,7 @@ Here's an example of how you use it:
     console.log('s4 =', s4.array());
     console.log('s5 =', s5.array());
     
-The set data type has the simplest, stupidest implementation possible: an unordered array. This is because of how JavaScript's data types work. If it were possible to compute a hash value from any data type, or get its memory address, then we could do something more elaborate. If `<` and `>` operations were defined for all data types, we could use some kind of balanced tree representation, or sorted arrays. If JavaScript objects supported arbitrary data types as indices, this would all be too easy. But none of those things is true, so we're stuck relying only on the `===` operation, and unsorted arrays. For small sets, this is not a problem. For larger sets, if performance of set operations turns out to be problematic, you may want to make a specialized set data type. For example, if your set members are all strings, you could represent sets as objects with set members as keys, and it would be very fast. If enough people want this, I might build it into this library as well.
+The set data type has the simplest, stupidest implementation possible: an unordered array. This is because of how JavaScript's data types work. If it were possible to compute a hash value from any data type, or get its memory address, then we could do something more elaborate. If `<` and `>` operations were defined for all data types, we could use some kind of balanced tree representation, or sorted arrays. If JavaScript objects supported arbitrary data types as indices, this would all be too easy. But none of those things is true, so we're stuck relying only on the `===` operation, and unsorted arrays. For small sets, this is not a problem. For larger sets, if performance of set operations turns out to be problematic, you may want to use a specialized set data type. For example, if your set members are all strings, you could represent sets as objects with set members as keys, and it would be fast. For this, use the `StringSet` class, described below.
 
 Set API
 ----------
@@ -91,3 +91,10 @@ The `Set` class has the following methods:
 * `pick()`: Return a random element of the set, or null if the set is empty. Unlike `pop`, does not remove the element from the set.
 
 The condition for determining whether two values are equal is the `===` operator. Therefore sets can support any mix of data types, as long as the data types can be compared for equality in some meaningful sense with `===`.
+
+Specialized sets
+----------
+
+If all of your set members have unique string representations, then you can create a set using object properties to keep track of the members. This takes advantage of the fast built-in object type in JavaScript, and is generally better than using general-purpose sets if there will not be collisions, e.g. a set containing both the number 42 and the string "42".
+
+The `StringSet` class behaves just like the `Set` class, but it uses this object-based encoding and requires that all set members have unique string representations. Instantiate it with `new StringSet(items)`, and the API is the same as described above.
