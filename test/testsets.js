@@ -36,6 +36,7 @@ assert.ok(s3.issuperset(s3sub));
 assert.ok(!s3sub.issuperset(s3));
 assert.ok(s3sub.issubset(s3));
 assert.ok(!s4.issubset(s3));
+assert.ok(s3.union(s4).equals(new sets.Set([1, 2, 3, "1", "2", "3", "foo"])));
 assert.ok(s3.intersection(s4).equals(new sets.Set(["1", 3])));
 assert.ok(s3.difference(s4).equals(new sets.Set([1, 2, "2", "3"])));
 assert.ok(s3.symmetric_difference(s4).equals(new sets.Set([1, 2, "2", "3", "foo"])));
