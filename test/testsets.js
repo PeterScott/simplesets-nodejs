@@ -74,6 +74,21 @@ var s5 = new sets.Set();
 s5.add(3).add(4).remove(3);
 assert.ok(s5.equals(new sets.Set([4])));
 
+// Test each() function
+function set_test_each(s) {
+    n = new sets.Set();
+    s.each(function(x) {
+	assert.ok(!n.has(x));
+	n.add(x);
+    });
+    assert.ok(n.equals(s));
+    assert.ok(s.equals(n));
+}
+set_test_each(new sets.Set([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9]));
+set_test_each(new sets.Set([1, 2, 3, "1", "2", "3", "foo"]));
+set_test_each(new sets.Set());
+set_test_each(new sets.Set({foo: 42}));
+
 ///////////////////////
 // sets.StringSet tests 
 ///////////////////////
@@ -145,6 +160,21 @@ assert.ok(nullset.issubset(nullset));
 var s5 = new sets.StringSet();
 s5.add(3).add(4).remove(3);
 assert.ok(s5.equals(new sets.StringSet([4])));
+
+// Test each() function
+function stringset_test_each(s) {
+    n = new sets.StringSet();
+    s.each(function(x) {
+	assert.ok(!n.has(x));
+	n.add(x);
+    });
+    assert.ok(n.equals(s));
+    assert.ok(s.equals(n));
+}
+set_test_each(new sets.StringSet([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9]));
+set_test_each(new sets.StringSet([1, 2, 3, "11", "22", "33", "foo"]));
+set_test_each(new sets.StringSet());
+set_test_each(new sets.StringSet({foo: 42}));
 
 // If we got to here, then...
 console.log('All tests passed!');

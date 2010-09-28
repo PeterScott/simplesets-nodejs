@@ -90,6 +90,8 @@ The `Set` class has the following methods:
 
 * `pick()`: Return a random element of the set, or null if the set is empty. Unlike `pop`, does not remove the element from the set.
 
+* `each(callback)`: Call a callback function on each element of the set. If the set is changed by the callback, the results are undefined. The callback takes a single argument: the set element that it's being called on.
+
 The condition for determining whether two values are equal is the `===` operator. Therefore sets can support any mix of data types, as long as the data types can be compared for equality in some meaningful sense with `===`.
 
 Specialized sets
