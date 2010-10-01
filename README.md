@@ -33,7 +33,7 @@ Here's an example of how you use it:
     console.log('Union:', s1.union(s2).array());
     
     // Make a set with numbers and strings.
-    s3 = new sets.Set([1, 2, 3, 'a', 'b', 'c']);
+    var s3 = new sets.Set([1, 2, 3, 'a', 'b', 'c']);
     console.log('Mixing data types:', s3.array());
     // Add in some more data types.
     var my_dict = {foo: 42, bar: 'bazaar'};
@@ -44,8 +44,8 @@ Here's an example of how you use it:
     console.log('New s3 =', s3.array());
     
     // You can make shallow copies of sets.
-    s4 = new sets.Set([1, 2, 3]);
-    s5 = s4.copy();
+    var s4 = new sets.Set([1, 2, 3]);
+    var s5 = s4.copy();
     s4.add(42);
     s5.remove(2);
     console.log('s4 =', s4.array());

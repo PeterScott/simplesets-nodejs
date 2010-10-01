@@ -59,7 +59,7 @@ var sa = new sets.Set([3, 1, 4, 1, 5, 9]);
 var sb = new sets.Set();
 
 for (var i = 0; i < 200; i++) {
-    var sa_old_size = sa.size()
+    var sa_old_size = sa.size();
     sb.add(sa.pick());
     assert.ok(sa.size() === sa_old_size);
 }
@@ -146,7 +146,7 @@ var sa = new sets.StringSet([3, 1, 4, 1, 5, 9]);
 var sb = new sets.StringSet();
 
 for (var i = 0; i < 200; i++) {
-    var sa_old_size = sa.size()
+    var sa_old_size = sa.size();
     sb.add(sa.pick());
     assert.ok(sa.size() === sa_old_size);
 }
