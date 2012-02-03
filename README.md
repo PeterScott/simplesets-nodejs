@@ -94,7 +94,7 @@ The `Set` class has the following methods:
 
 * `each(callback)`: Call a callback function on each element of the set. If the set is changed by the callback, the results are undefined. The callback takes a single argument: the set element that it's being called on.
 
-The condition for determining whether two values are equal is the `===` operator. Therefore sets can support any mix of data types, as long as the data types can be compared for equality in some meaningful sense with `===`.
+The condition for determining whether two values are equal is the `===` operator. Therefore sets can support any mix of data types, as long as the data types can be compared for equality in some meaningful sense with `===`. Callback takes the same parameters as the forEach method of arrays:  value, index, set. Takes an optional parameter that sets what this is bound to.
 
 Specialized sets
 ----------
