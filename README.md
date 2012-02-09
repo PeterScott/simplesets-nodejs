@@ -104,3 +104,8 @@ If all of your set members have unique string representations, then you can crea
 The `StringSet` class behaves just like the `Set` class, but it uses this object-based encoding and requires that all set members have unique string representations. Instantiate it with `new StringSet(items)`, and the API is the same as described above.
 
 Note that `Set` will generally be faster and more memory-efficient than `StringSet` for sets with fewer than around 110 elements. `StringSet` is good for large sets, though.
+
+License
+-------
+
+This is released under an [MIT License](http://en.wikipedia.org/wiki/MIT_License), like node.js itself.
