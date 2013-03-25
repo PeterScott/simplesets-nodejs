@@ -334,7 +334,7 @@ exports.StringSet.prototype = StringSetPrototype;
 
 
 var ObjectSetPrototype = {
-    // Does this set contain an element x with id x.id? Returns true or false.
+    // Does this set contain an element x? Returns true or false.
     has: function(x) {
 	return this._items.hasOwnProperty(x.id);
     },
@@ -490,7 +490,11 @@ var ObjectSetPrototype = {
     }
 }
 
-// A special type of set, where all keys have object.id representations where values are object {}
+// A special type of set, where all keys have unique string
+// representations. This works fine with a set containing only
+// strings, or only numbers. However, if you want to have the number
+// 42 and the string "42" in the same set, you should use the Set data
+// type, not StringSet.
 exports.ObjectSet = function(items) {
     // All items are stored in an object. 
     this._items = {};
