@@ -99,11 +99,19 @@ The condition for determining whether two values are equal is the `===` operator
 Specialized sets
 ----------
 
+`StringSet`:
+
 If all of your set members have unique string representations, then you can create a set using object properties to keep track of the members. This takes advantage of the fast built-in object type in JavaScript, and is generally better than using general-purpose sets if there will not be collisions, e.g. a set containing both the number 42 and the string "42".
 
 The `StringSet` class behaves just like the `Set` class, but it uses this object-based encoding and requires that all set members have unique string representations. Instantiate it with `new StringSet(items)`, and the API is the same as described above.
 
 Note that `Set` will generally be faster and more memory-efficient than `StringSet` for sets with fewer than around 110 elements. `StringSet` is good for large sets, though.
+
+`ObjectSet`:
+
+The same API and behaviour as 'StringSet' except keys are derived from the string property at `object.id`.
+
+For example... `new ObjectSet([{id:"one", someValue:42},{id:"two", someValue:43}])`
 
 License
 -------

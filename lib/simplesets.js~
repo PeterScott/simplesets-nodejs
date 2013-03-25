@@ -334,14 +334,14 @@ exports.StringSet.prototype = StringSetPrototype;
 
 
 var ObjectSetPrototype = {
-    // Does this set contain an element x with id x.id? Returns true or false.
+    // Does this set contain an element x? Returns true or false.
     has: function(x) {
-	return x && this._items.hasOwnProperty(x.id);
+	return this._items.hasOwnProperty(x.id);
     },
 
     // Add an element x to this set, and return this set.
     add: function(x) {
-	if (x && !this.has(x)) {
+	if (!this.has(x)) {
       this._items[x.id] = x;
 	    this._size++;
 	}
@@ -362,8 +362,8 @@ var ObjectSetPrototype = {
     // the other set, or both.
     union: function(other) {
 	var result = new exports.ObjectSet();
-	for (var x in this._items) result.add(this._items[x]);
-	for (x in other._items) result.add(other._items[x]);
+	for (var x in this._items) result.add(this._items[x.id]);
+	for (x in other._items) result.add(other._items[x.id]);
 	return result;
     },
 
@@ -372,8 +372,8 @@ var ObjectSetPrototype = {
     intersection: function(other) {
 	var result = new exports.ObjectSet();
 	for (var x in other._items)
-	  if (this._items.hasOwnProperty(x))
-		  result.add(this._items[x]);
+	    if (this._items.hasOwnProperty(x.id))
+		result.add(this._items[x.id]);
 	return result;
     },
 
@@ -382,7 +382,7 @@ var ObjectSetPrototype = {
     difference: function(other) {
 	var result = new exports.ObjectSet();
 	for (var x in this._items)
-	    if (!other._items.hasOwnProperty(x))
+	    if (!other._items.hasOwnProperty(x.id))
 		result.add(this._items[x]);
 	return result;
     },
@@ -397,8 +397,8 @@ var ObjectSetPrototype = {
     // Return true if every element of this set is in the other set.
     issubset: function(other) {
 	for (var x in this._items)
-	  if (!other._items.hasOwnProperty(x))
-		  return false;
+	    if (!other._items.hasOwnProperty(x.id))
+		return false;
 	return true;
     },
 
@@ -490,7 +490,11 @@ var ObjectSetPrototype = {
     }
 }
 
-// A special type of set, where all keys have object.id representations where values are object {}
+// A special type of set, where all keys have unique string
+// representations. This works fine with a set containing only
+// strings, or only numbers. However, if you want to have the number
+// 42 and the string "42" in the same set, you should use the Set data
+// type, not StringSet.
 exports.ObjectSet = function(items) {
     // All items are stored in an object. 
     this._items = {};
